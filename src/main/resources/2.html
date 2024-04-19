@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <!-- <meta http-equiv="refresh" content="1;url=http://192.168.1.9/yuseo-web/test.html" /> -->
+        <!-- <meta http-equiv="refresh" content="3;url=https://www.google.com/search?q=sapu" /> -->
+    </head>
+    <body>
+        <form action="/action_page.php">
+  <label for="fname">Input text:</label><br>
+  <input type="text" id="fname" name="fname" value=""><br>
+  <input id="submit" type="button" value="submit" onclick="doFunction();" />
+  <input id="reset" type="button" value="reset" onclick="doFunction();" />
+</form> 
+        <p id="demo"></p>
+        <script>
+           
+
+    document.getElementById("submit").onclick = function () { 
+        var apiUrl = 'http://192.168.1.9:8080/api/change-url/'+document.getElementById("fname").value;
+        fetch(apiUrl).then(response => {
+          return response.json();
+        }).then(data => {
+          // Work with JSON data here
+          console.log(data);
+        }).catch(err => {
+          // Do something for an error here
+        });
+         alert("sukses submit");
+    };
+
+
+    document.getElementById("reset").onclick = function () { 
+        var apiUrl = 'http://192.168.1.9:8080/api/reset'
+        fetch(apiUrl).then(response => {
+          return response.json();
+        }).then(data => {
+          // Work with JSON data here
+          console.log(data);
+        }).catch(err => {
+          // Do something for an error here
+        });
+         alert("sukses reset text");
+    };
+    
+    
+        </script> 
+    </body>
+</html>
